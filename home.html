@@ -34,305 +34,246 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Speech to Text and Translation</title>
-    <link rel="stylesheet" href="./css/lingua.css">
-</head>
-<body>
-    <nav>
-        <a href="./signup.html">
-            <img src="./image/globe-solid (1).svg" alt="" width="40">
-            <span>
-                <h1>LinguaBridge</h1>
-                <p style="font-size: 10px;">Connecting Languages Effortlessly, through voice</p>
-            </span>
-        </a>
-    </nav>
-    <section class="section1">
-        <h1 style="font-size: 2.5rem; text-align: center;">Voice Translator</h1>
-        <p style="text-align: center;">Speak into the microphone and see the translation below</p>
-        
-        <div class="speaker">
-            <p id="action" style="color: grey; font-weight: 800; padding: 0; padding-left: 2rem;"></p>
-            <button onclick="runSpeechRecog()" id="record" style="border: transparent;">
-                <svg id="recordIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M192 0C139 0 96 43 96 96V256c0 53 43 96 96 96s96-43 96-96V96c0-53-43-96-96-96zM64 216c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c0 89.1 66.2 162.7 152 174.4V464H120c-13.3 0-24 10.7-24 24s10.7 24 24 24h72 72c13.3 0 24-10.7 24-24s-10.7-24-24-24H216V430.4c85.8-11.7 152-85.3 152-174.4V216c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c0 70.7-57.3 128-128 128s-128-57.3-128-128V216z" /></svg>
-                
-            </button>
-        </div>
-        
-        <textarea id="output" placeholder="Your speech will appear here..."></textarea><br>
-        <div class="selectLanguage">
-            <p style="font-size: 13px;">Select language you want to translate to below</p>
-            <select id="language">
-                <option value="af">Afrikaans</option>
-                <option value="sq">Albanian</option>
-                <option value="am">Amharic</option>
-                <option value="ar">Arabic</option>
-                <option value="hy">Armenian</option>
-                <option value="az">Azerbaijani</option>
-                <option value="eu">Basque</option>
-                <option value="be">Belarusian</option>
-                <option value="bn">Bengali</option>
-                <option value="bs">Bosnian</option>
-                <option value="bg">Bulgarian</option>
-                <option value="ca">Catalan</option>
-                <option value="ceb">Cebuano</option>
-                <option value="ny">Chichewa</option>
-                <option value="zh-CN">Chinese (Simplified)</option>
-                <option value="zh-TW">Chinese (Traditional)</option>
-                <option value="co">Corsican</option>
-                <option value="hr">Croatian</option>
-                <option value="cs">Czech</option>
-                <option value="da">Danish</option>
-                <option value="nl">Dutch</option>
-                <option value="en">English</option>
-                <option value="eo">Esperanto</option>
-                <option value="et">Estonian</option>
-                <option value="tl">Filipino</option>
-                <option value="fi">Finnish</option>
-                <option value="fr">French</option>
-                <option value="fy">Frisian</option>
-                <option value="gl">Galician</option>
-                <option value="ka">Georgian</option>
-                <option value="de">German</option>
-                <option value="el">Greek</option>
-                <option value="gu">Gujarati</option>
-                <option value="ht">Haitian Creole</option>
-                <option value="ha">Hausa</option>
-                <option value="haw">Hawaiian</option>
-                <option value="iw">Hebrew</option>
-                <option value="hi">Hindi</option>
-                <option value="hmn">Hmong</option>
-                <option value="hu">Hungarian</option>
-                <option value="is">Icelandic</option>
-                <option value="ig">Igbo</option>
-                <option value="id">Indonesian</option>
-                <option value="ga">Irish</option>
-                <option value="it">Italian</option>
-                <option value="ja">Japanese</option>
-                <option value="jw">Javanese</option>
-                <option value="kn">Kannada</option>
-                <option value="kk">Kazakh</option>
-                <option value="km">Khmer</option>
-                <option value="rw">Kinyarwanda</option>
-                <option value="ko">Korean</option>
-                <option value="ku">Kurdish (Kurmanji)</option>
-                <option value="ky">Kyrgyz</option>
-                <option value="lo">Lao</option>
-                <option value="la">Latin</option>
-                <option value="lv">Latvian</option>
-                <option value="lt">Lithuanian</option>
-                <option value="lb">Luxembourgish</option>
-                <option value="mk">Macedonian</option>
-                <option value="mg">Malagasy</option>
-                <option value="ms">Malay</option>
-                <option value="ml">Malayalam</option>
-                <option value="mt">Maltese</option>
-                <option value="mi">Maori</option>
-                <option value="mr">Marathi</option>
-                <option value="mn">Mongolian</option>
-                <option value="my">Myanmar (Burmese)</option>
-                <option value="ne">Nepali</option>
-                <option value="no">Norwegian</option>
-                <option value="or">Odia (Oriya)</option>
-                <option value="ps">Pashto</option>
-                <option value="fa">Persian</option>
-                <option value="pl">Polish</option>
-                <option value="pt">Portuguese</option>
-                <option value="pa">Punjabi</option>
-                <option value="ro">Romanian</option>
-                <option value="ru">Russian</option>
-                <option value="sm">Samoan</option>
-                <option value="gd">Scots Gaelic</option>
-                <option value="sr">Serbian</option>
-                <option value="st">Sesotho</option>
-                <option value="sn">Shona</option>
-                <option value="sd">Sindhi</option>
-                <option value="si">Sinhala</option>
-                <option value="sk">Slovak</option>
-                <option value="sl">Slovenian</option>
-                <option value="so">Somali</option>
-                <option value="es">Spanish</option>
-                <option value="su">Sundanese</option>
-                <option value="sw">Swahili</option>
-                <option value="sv">Swedish</option>
-                <option value="tg">Tajik</option>
-                <option value="ta">Tamil</option>
-                <option value="tt">Tatar</option>
-                <option value="te">Telugu</option>
-                <option value="th">Thai</option>
-                <option value="tr">Turkish</option>
-                <option value="tk">Turkmen</option>
-                <option value="uk">Ukrainian</option>
-                <option value="ur">Urdu</option>
-                <option value="ug">Uyghur</option>
-                <option value="uz">Uzbek</option>
-                <option value="vi">Vietnamese</option>
-                <option value="cy">Welsh</option>
-                <option value="xh">Xhosa</option>
-                <option value="yi">Yiddish</option>
-                <option value="yo">Yoruba</option>
-                <option value="zu">Zulu</option>
-            </select>
-        </div>
-        <textarea id="translation" class="hide" placeholder="Translation will appear here..."></textarea><br>
-        
-    </section>
-    <section class="section2">
-        <div class="secHeader">
-            <span>
-                <img src="./image/vrecording pic.jpg" alt="#" width="200" style="float: right;">
-            </span>
-            <h2>Welcome to LinguaBridge!</h2>
-            <p>Our mission is to connect languages effortlessly through voice. With our innovative Voice Translator, you can speak into the microphone and see your speech translated into your preferred language in real-time.</p>
+    <head>
+        <meta charset="UTF-8">
+        <title>Speech to Text and Translation</title>
+        <link rel="stylesheet" href="./css/lingua.css">
+    </head>
+    <body>
+        <nav>
+            <a href="./signup.html">
+                <img src="./image/globe-solid (1).svg" alt="" width="40">
+                <span>
+                    <h1>LinguaBridge</h1>
+                    <p style="font-size: 10px;">Connecting Languages Effortlessly, through voice</p>
+                </span>
+            </a>
+        </nav>
+        <section class="section1">
+            <h1 style="font-size: 2.5rem; text-align: center;">Voice Translator</h1>
+            <p style="text-align: center;">Speak into the microphone and see the translation below</p>
             
-        </div>
-        <h2>How it works:</h2>
-        <ol>
-            <li>
-                <h3>Speak and Translate:</h3>
-                <ul>
-                    <li>Simply click on the microphone button to start the speech recognition process.</li>
-                    <li>Speak clearly into the microphone.</li>
-                    <li>Your spoken words will appear as text in the "Your speech will appear here..." section.</li>
-                </ul>
-            </li>
-            <li>
-                <h3>Select Your Language:</h3>
-                <ul>
-                    <li>Choose your target language from the drop-down list.</li>
-                    <li>Over 80 languages are available, including Spanish, French, German, Chinese, Arabic, and many more.</li>
-                </ul>
-            </li>
-            <li>
-                <h3>>See the Translation:</h3>
-                <ul>
-                    <li>The translated text will appear in the "Translation will appear here..." section.</li>
-                    <li>Experience instant and accurate translations powered by cutting-edge technology.</li>
-                </ul>
-            </li>
-        </ol>
-        <h3 style="text-align: center;">Features</h3>
-        <div class="features">
+            <div class="speaker">
+                <p id="action" style="color: grey; font-weight: 800; padding: 0; padding-left: 2rem;"></p>
+                <button onclick="runSpeechRecog()" id="record" style="border: transparent;">
+                    <svg id="recordIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M192 0C139 0 96 43 96 96V256c0 53 43 96 96 96s96-43 96-96V96c0-53-43-96-96-96zM64 216c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c0 89.1 66.2 162.7 152 174.4V464H120c-13.3 0-24 10.7-24 24s10.7 24 24 24h72 72c13.3 0 24-10.7 24-24s-10.7-24-24-24H216V430.4c85.8-11.7 152-85.3 152-174.4V216c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c0 70.7-57.3 128-128 128s-128-57.3-128-128V216z" /></svg>
+                    
+                </button>
+            </div>
+            
+            <textarea id="output" placeholder="Your speech will appear here..."></textarea><br>
+            <div class="selectLanguage">
+                <p style="font-size: 13px;">Select language you want to translate to below</p>
+                <select id="language">
+                    <option value="af">Afrikaans</option>
+                    <option value="sq">Albanian</option>
+                    <option value="am">Amharic</option>
+                    <option value="ar">Arabic</option>
+                    <option value="hy">Armenian</option>
+                    <option value="az">Azerbaijani</option>
+                    <option value="eu">Basque</option>
+                    <option value="be">Belarusian</option>
+                    <option value="bn">Bengali</option>
+                    <option value="bs">Bosnian</option>
+                    <option value="bg">Bulgarian</option>
+                    <option value="ca">Catalan</option>
+                    <option value="ceb">Cebuano</option>
+                    <option value="ny">Chichewa</option>
+                    <option value="zh-CN">Chinese (Simplified)</option>
+                    <option value="zh-TW">Chinese (Traditional)</option>
+                    <option value="co">Corsican</option>
+                    <option value="hr">Croatian</option>
+                    <option value="cs">Czech</option>
+                    <option value="da">Danish</option>
+                    <option value="nl">Dutch</option>
+                    <option value="en">English</option>
+                    <option value="eo">Esperanto</option>
+                    <option value="et">Estonian</option>
+                    <option value="tl">Filipino</option>
+                    <option value="fi">Finnish</option>
+                    <option value="fr">French</option>
+                    <option value="fy">Frisian</option>
+                    <option value="gl">Galician</option>
+                    <option value="ka">Georgian</option>
+                    <option value="de">German</option>
+                    <option value="el">Greek</option>
+                    <option value="gu">Gujarati</option>
+                    <option value="ht">Haitian Creole</option>
+                    <option value="ha">Hausa</option>
+                    <option value="haw">Hawaiian</option>
+                    <option value="iw">Hebrew</option>
+                    <option value="hi">Hindi</option>
+                    <option value="hmn">Hmong</option>
+                    <option value="hu">Hungarian</option>
+                    <option value="is">Icelandic</option>
+                    <option value="ig">Igbo</option>
+                    <option value="id">Indonesian</option>
+                    <option value="ga">Irish</option>
+                    <option value="it">Italian</option>
+                    <option value="ja">Japanese</option>
+                    <option value="jw">Javanese</option>
+                    <option value="kn">Kannada</option>
+                    <option value="kk">Kazakh</option>
+                    <option value="km">Khmer</option>
+                    <option value="rw">Kinyarwanda</option>
+                    <option value="ko">Korean</option>
+                    <option value="ku">Kurdish (Kurmanji)</option>
+                    <option value="ky">Kyrgyz</option>
+                    <option value="lo">Lao</option>
+                    <option value="la">Latin</option>
+                    <option value="lv">Latvian</option>
+                    <option value="lt">Lithuanian</option>
+                    <option value="lb">Luxembourgish</option>
+                    <option value="mk">Macedonian</option>
+                    <option value="mg">Malagasy</option>
+                    <option value="ms">Malay</option>
+                    <option value="ml">Malayalam</option>
+                    <option value="mt">Maltese</option>
+                    <option value="mi">Maori</option>
+                    <option value="mr">Marathi</option>
+                    <option value="mn">Mongolian</option>
+                    <option value="my">Myanmar (Burmese)</option>
+                    <option value="ne">Nepali</option>
+                    <option value="no">Norwegian</option>
+                    <option value="or">Odia (Oriya)</option>
+                    <option value="ps">Pashto</option>
+                    <option value="fa">Persian</option>
+                    <option value="pl">Polish</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="pa">Punjabi</option>
+                    <option value="ro">Romanian</option>
+                    <option value="ru">Russian</option>
+                    <option value="sm">Samoan</option>
+                    <option value="gd">Scots Gaelic</option>
+                    <option value="sr">Serbian</option>
+                    <option value="st">Sesotho</option>
+                    <option value="sn">Shona</option>
+                    <option value="sd">Sindhi</option>
+                    <option value="si">Sinhala</option>
+                    <option value="sk">Slovak</option>
+                    <option value="sl">Slovenian</option>
+                    <option value="so">Somali</option>
+                    <option value="es">Spanish</option>
+                    <option value="su">Sundanese</option>
+                    <option value="sw">Swahili</option>
+                    <option value="sv">Swedish</option>
+                    <option value="tg">Tajik</option>
+                    <option value="ta">Tamil</option>
+                    <option value="tt">Tatar</option>
+                    <option value="te">Telugu</option>
+                    <option value="th">Thai</option>
+                    <option value="tr">Turkish</option>
+                    <option value="tk">Turkmen</option>
+                    <option value="uk">Ukrainian</option>
+                    <option value="ur">Urdu</option>
+                    <option value="ug">Uyghur</option>
+                    <option value="uz">Uzbek</option>
+                    <option value="vi">Vietnamese</option>
+                    <option value="cy">Welsh</option>
+                    <option value="xh">Xhosa</option>
+                    <option value="yi">Yiddish</option>
+                    <option value="yo">Yoruba</option>
+                    <option value="zu">Zulu</option>
+                </select>
+            </div>
+            <textarea id="translation" class="hide" placeholder="Translation will appear here..."></textarea><br>
+            
+        </section>
+        <section class="section2">
+            <div class="secHeader">
+                <span>
+                    <img src="./image/vrecording pic.jpg" alt="#" width="200" style="float: right;">
+                </span>
+                <h2>Welcome to LinguaBridge!</h2>
+                <p>Our mission is to connect languages effortlessly through voice. With our innovative Voice Translator, you can speak into the microphone and see your speech translated into your preferred language in real-time.</p>
                 
-            <div class="features1">
-                <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
-                        <path fill="currentColor" d="m40.05 32.75-2.5-2.5q2.4-2.55 3.675-5.225T42.5 18.45q0-3.9-1.275-6.575Q39.95 9.2 37.55 6.65l2.5-2.5q2.8 2.9 4.375 6.325Q46 13.9 46 18.45t-1.575 7.975Q42.85 29.85 40.05 32.75Zm-6.95-7.1-2.5-2.5q.9-1 1.4-2.125.5-1.125.5-2.575 0-1.45-.5-2.575-.5-1.125-1.4-2.125l2.5-2.5q1.3 1.4 2.1 3.275t.8 3.925q0 2.05-.8 3.925t-2.1 3.275Zm-15.1.3q-3.3 0-5.4-2.1-2.1-2.1-2.1-5.4 0-3.3 2.1-5.4 2.1-2.1 5.4-2.1 3.3 0 5.4 2.1 2.1 2.1 2.1 5.4 0 3.3-2.1 5.4-2.1 2.1-5.4 2.1ZM2 42v-4.7q0-1.9.95-3.225Q3.9 32.75 5.4 32q2.55-1.3 6.025-2.15Q14.9 29 18 29t6.55.85q3.45.85 6 2.15 1.5.75 2.475 2.075Q34 35.4 34 37.3V42Zm3-3h36v-1.7q0-.8-.425-1.475T29.35 34.7q-2.4-1.35-5.45-2.025Q20.85 32 18 32q-2.85 0-5.925.725Q9 33.45 6.6 34.7q-.7.35-1.15 1.075Q5 36.5 5 37.3Zm13-16.05q1.95 0 3.225-1.275Q22.5 20.4 22.5 18.45q0-1.95-1.275-3.225Q19.95 13.95 18 13.95q-1.95 0-3.225 1.275Q13.5 16.5 13.5 18.45q0 1.95 1.275 3.225Q16.05 22.95 18 22.95Zm0-4.5ZM18 39Z"></path>
-                    </svg>
-                </p>
-                <p>Easy to Use: A user-friendly interface designed for effortless interaction</p>
             </div>
-            <div class="features2">
-                <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
-                        <path fill="currentColor" d="M24 42v-3.55l10.8-10.8 3.55 3.55L27.55 42ZM6 31.5v-3h15v3Zm34.5-2.45-3.55-3.55 1.45-1.45q.4-.4 1.05-.4t1.05.4l1.45 1.45q.4.4.4 1.05t-.4 1.05ZM6 23.25v-3h33.5v3ZM6 15v-3h33.5v3Z">
-                        </path>
-                    </svg>
-                </p>
-                <p>Real-time Translation: Fast and reliable speech-to-text and text-to-translation services</p>
+            <h2>How it works:</h2>
+            <ol>
+                <li>
+                    <h3>Speak and Translate:</h3>
+                    <ul>
+                        <li>Simply click on the microphone button to start the speech recognition process.</li>
+                        <li>Speak clearly into the microphone.</li>
+                        <li>Your spoken words will appear as text in the "Your speech will appear here..." section.</li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Select Your Language:</h3>
+                    <ul>
+                        <li>Choose your target language from the drop-down list.</li>
+                        <li>Over 80 languages are available, including Spanish, French, German, Chinese, Arabic, and many more.</li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>>See the Translation:</h3>
+                    <ul>
+                        <li>The translated text will appear in the "Translation will appear here..." section.</li>
+                        <li>Experience instant and accurate translations powered by cutting-edge technology.</li>
+                    </ul>
+                </li>
+            </ol>
+            <h3 style="text-align: center;">Features</h3>
+            <div class="features">
+                    
+                <div class="features1">
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+                            <path fill="currentColor" d="m40.05 32.75-2.5-2.5q2.4-2.55 3.675-5.225T42.5 18.45q0-3.9-1.275-6.575Q39.95 9.2 37.55 6.65l2.5-2.5q2.8 2.9 4.375 6.325Q46 13.9 46 18.45t-1.575 7.975Q42.85 29.85 40.05 32.75Zm-6.95-7.1-2.5-2.5q.9-1 1.4-2.125.5-1.125.5-2.575 0-1.45-.5-2.575-.5-1.125-1.4-2.125l2.5-2.5q1.3 1.4 2.1 3.275t.8 3.925q0 2.05-.8 3.925t-2.1 3.275Zm-15.1.3q-3.3 0-5.4-2.1-2.1-2.1-2.1-5.4 0-3.3 2.1-5.4 2.1-2.1 5.4-2.1 3.3 0 5.4 2.1 2.1 2.1 2.1 5.4 0 3.3-2.1 5.4-2.1 2.1-5.4 2.1ZM2 42v-4.7q0-1.9.95-3.225Q3.9 32.75 5.4 32q2.55-1.3 6.025-2.15Q14.9 29 18 29t6.55.85q3.45.85 6 2.15 1.5.75 2.475 2.075Q34 35.4 34 37.3V42Zm3-3h36v-1.7q0-.8-.425-1.475T29.35 34.7q-2.4-1.35-5.45-2.025Q20.85 32 18 32q-2.85 0-5.925.725Q9 33.45 6.6 34.7q-.7.35-1.15 1.075Q5 36.5 5 37.3Zm13-16.05q1.95 0 3.225-1.275Q22.5 20.4 22.5 18.45q0-1.95-1.275-3.225Q19.95 13.95 18 13.95q-1.95 0-3.225 1.275Q13.5 16.5 13.5 18.45q0 1.95 1.275 3.225Q16.05 22.95 18 22.95Zm0-4.5ZM18 39Z"></path>
+                        </svg>
+                    </p>
+                    <p>Easy to Use: A user-friendly interface designed for effortless interaction</p>
+                </div>
+                <div class="features2">
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+                            <path fill="currentColor" d="M24 42v-3.55l10.8-10.8 3.55 3.55L27.55 42ZM6 31.5v-3h15v3Zm34.5-2.45-3.55-3.55 1.45-1.45q.4-.4 1.05-.4t1.05.4l1.45 1.45q.4.4.4 1.05t-.4 1.05ZM6 23.25v-3h33.5v3ZM6 15v-3h33.5v3Z">
+                            </path>
+                        </svg>
+                    </p>
+                    <p>Real-time Translation: Fast and reliable speech-to-text and text-to-translation services</p>
+                </div>
+                <div class="features2">
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+                            <path fill="currentColor" d="M11.1 44q-2.2 0-3.725-1.525T5.85 38.75V32.5h6.35V4l3 3 3-3 2.95 3 3-3 3 3 3-3 3 3 3-3 3 3 3-3v34.75q0 2.2-1.525 3.725T36.9 44Zm25.8-3q1 0 1.625-.625t.625-1.625V9H15.2v23.5h19.45v6.25q0 1 .625 1.625T36.9 41ZM17.85 16.9v-3h12v3Zm0 6.7v-3h12v3Zm16.65-6.7q-.6 0-1.05-.45Q33 16 33 15.4q0-.6.45-1.05.45-.45 1.05-.45.6 0 1.05.45.45.45.45 1.05 0 .6-.45 1.05-.45.45-1.05.45Zm0 6.45q-.6 0-1.05-.45-.45-.45-.45-1.05 0-.6.45-1.05.45-.45 1.05-.45.6 0 1.05.45.45.45.45 1.05 0 .6-.45 1.05-.45.45-1.05.45ZM11.05 41h30.6v-5.5H8.85v3.25q0 1 .625 1.625T11.05 41Zm-2.2 0v-5.5V41Z">
+                            </path>
+                        </svg> 
+                    </p>
+                    <p>Modern Design: A sleek, modern layout that is visually appealing and easy to navigate</p>
+                </div>
+                <div class="features2">
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+                            <path fill="currentColor" d="M24 44q-4.2 0-7.85-1.575Q12.5 40.85 9.8 38.15q-2.7-2.7-4.25-6.375Q4 28.1 4 23.9t1.55-7.825Q7.1 12.45 9.8 9.75t6.35-4.225Q19.8 4 24 4q4.2 0 7.85 1.525Q35.5 7.05 38.2 9.75q2.7 2.7 4.25 6.325Q44 19.7 44 23.9t-1.55 7.875Q40.9 35.45 38.2 38.15t-6.35 4.275Q28.2 44 24 44Zm0-2.9q1.75-1.8 2.925-4.125Q28.1 34.65 28.85 31.45H19.2q.7 3 1.875 5.4Q22.25 39.25 24 41.1Zm-4.25-.6q-1.25-1.9-2.15-4.1-.9-2.2-1.5-4.95H8.6Q10.5 35 13 37.025q2.5 2.025 6.75 3.475Zm8.55-.05q3.6-1.15 6.475-3.45 2.875-2.3 4.625-5.55h-7.45q-.65 2.7-1.525 4.9-.875 2.2-2.125 4.1Zm-20.7-12h7.95q-.15-1.35-.175-2.425-.025-1.075-.025-2.125 0-1.25.05-2.225.05-.975.2-2.175h-8q-.35 1.2-.475 2.15T7 23.9q0 1.3.125 2.325.125 1.025.475 2.225Zm11.05 0h39.4q.2-1.55.25-2.525.05-.975.05-2.025 0-1-.05-1.925T29.4 19.5H18.65q-.2 1.55-.25 2.475-.05.925-.05 1.925 0 1.05.05 2.025.05.975.25 2.525Zm13.75 0h8q.35-1.2.475-2.225Q41 25.2 41 23.9q0-1.3-.125-2.25T40.4 19.5h-7.95q.15 1.75.2 2.675.05.925.05 1.725 0 1.1-.075 2.075-.075.975-.225 2.475Zm-.5-11.95h7.5q-1.65-3.45-4.525-5.75Q32 8.45 28.25 7.5q1.25 1.85 2.125 4t1.525 5Zm-12.7 0h9.7q-.55-2.65-1.85-5.125T24 7q-1.6 1.35-2.7 3.55-1.1 2.2-2.1 5.95Zm-10.6 0h7.55q.55-2.7 1.4-4.825.85-2.125 2.15-4.125-3.75.95-6.55 3.2T8.6 16.5Z">
+                            </path>
+                        </svg>
+                    </p>
+                    <p>Wide Language Support: Translate your speech into numerous languages, accommodating diverse needs</p>
+                </div>
             </div>
-            <div class="features2">
-                <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
-                        <path fill="currentColor" d="M11.1 44q-2.2 0-3.725-1.525T5.85 38.75V32.5h6.35V4l3 3 3-3 2.95 3 3-3 3 3 3-3 3 3 3-3 3 3 3-3v34.75q0 2.2-1.525 3.725T36.9 44Zm25.8-3q1 0 1.625-.625t.625-1.625V9H15.2v23.5h19.45v6.25q0 1 .625 1.625T36.9 41ZM17.85 16.9v-3h12v3Zm0 6.7v-3h12v3Zm16.65-6.7q-.6 0-1.05-.45Q33 16 33 15.4q0-.6.45-1.05.45-.45 1.05-.45.6 0 1.05.45.45.45.45 1.05 0 .6-.45 1.05-.45.45-1.05.45Zm0 6.45q-.6 0-1.05-.45-.45-.45-.45-1.05 0-.6.45-1.05.45-.45 1.05-.45.6 0 1.05.45.45.45.45 1.05 0 .6-.45 1.05-.45.45-1.05.45ZM11.05 41h30.6v-5.5H8.85v3.25q0 1 .625 1.625T11.05 41Zm-2.2 0v-5.5V41Z">
-                        </path>
-                    </svg> 
-                </p>
-                <p>Modern Design: A sleek, modern layout that is visually appealing and easy to navigate</p>
-            </div>
-            <div class="features2">
-                <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
-                        <path fill="currentColor" d="M24 44q-4.2 0-7.85-1.575Q12.5 40.85 9.8 38.15q-2.7-2.7-4.25-6.375Q4 28.1 4 23.9t1.55-7.825Q7.1 12.45 9.8 9.75t6.35-4.225Q19.8 4 24 4q4.2 0 7.85 1.525Q35.5 7.05 38.2 9.75q2.7 2.7 4.25 6.325Q44 19.7 44 23.9t-1.55 7.875Q40.9 35.45 38.2 38.15t-6.35 4.275Q28.2 44 24 44Zm0-2.9q1.75-1.8 2.925-4.125Q28.1 34.65 28.85 31.45H19.2q.7 3 1.875 5.4Q22.25 39.25 24 41.1Zm-4.25-.6q-1.25-1.9-2.15-4.1-.9-2.2-1.5-4.95H8.6Q10.5 35 13 37.025q2.5 2.025 6.75 3.475Zm8.55-.05q3.6-1.15 6.475-3.45 2.875-2.3 4.625-5.55h-7.45q-.65 2.7-1.525 4.9-.875 2.2-2.125 4.1Zm-20.7-12h7.95q-.15-1.35-.175-2.425-.025-1.075-.025-2.125 0-1.25.05-2.225.05-.975.2-2.175h-8q-.35 1.2-.475 2.15T7 23.9q0 1.3.125 2.325.125 1.025.475 2.225Zm11.05 0h39.4q.2-1.55.25-2.525.05-.975.05-2.025 0-1-.05-1.925T29.4 19.5H18.65q-.2 1.55-.25 2.475-.05.925-.05 1.925 0 1.05.05 2.025.05.975.25 2.525Zm13.75 0h8q.35-1.2.475-2.225Q41 25.2 41 23.9q0-1.3-.125-2.25T40.4 19.5h-7.95q.15 1.75.2 2.675.05.925.05 1.725 0 1.1-.075 2.075-.075.975-.225 2.475Zm-.5-11.95h7.5q-1.65-3.45-4.525-5.75Q32 8.45 28.25 7.5q1.25 1.85 2.125 4t1.525 5Zm-12.7 0h9.7q-.55-2.65-1.85-5.125T24 7q-1.6 1.35-2.7 3.55-1.1 2.2-2.1 5.95Zm-10.6 0h7.55q.55-2.7 1.4-4.825.85-2.125 2.15-4.125-3.75.95-6.55 3.2T8.6 16.5Z">
-                        </path>
-                    </svg>
-                </p>
-                <p>Wide Language Support: Translate your speech into numerous languages, accommodating diverse needs</p>
-            </div>
-        </div>
+            
+                <li>
+                    <h3>Technologies Used:</h3>
+                    <ul>
+                        <li>Speech Recognition: Utilizes the webkitSpeechRecognition API for real-time speech recognition.</li>
+                        <li>Translation API: Integrates with the MyMemory Translated API for accurate translations.</li>
+                        <li>Responsive Design: Optimized for both desktop and mobile use.</li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Get Started:</h3>
+                    <ul>
+                        <li>Navigate to the main page.</li>
+                        <li>Speak into the microphone by clicking the 'Speech' button.</li>
+                        <li>Select your preferred target language from the drop-down menu.</li>
+                        <li>View your translated text instantly.</li>
+                    </ul>
+                </li>
+            
+            <p>Join us on this journey to break language barriers and connect the world through voice with LinguaBridge.</p>
+        </section>
+        <script src="./lingua.js"></script>
         
-            <li>
-                <h3>Technologies Used:</h3>
-                <ul>
-                    <li>Speech Recognition: Utilizes the webkitSpeechRecognition API for real-time speech recognition.</li>
-                    <li>Translation API: Integrates with the MyMemory Translated API for accurate translations.</li>
-                    <li>Responsive Design: Optimized for both desktop and mobile use.</li>
-                </ul>
-            </li>
-            <li>
-                <h3>Get Started:</h3>
-                <ul>
-                    <li>Navigate to the main page.</li>
-                    <li>Speak into the microphone by clicking the 'Speech' button.</li>
-                    <li>Select your preferred target language from the drop-down menu.</li>
-                    <li>View your translated text instantly.</li>
-                </ul>
-            </li>
-        
-        <p>Join us on this journey to break language barriers and connect the world through voice with LinguaBridge.</p>
-    </section>
-    
-    <script>
-        function runSpeechRecog() {
-            document.getElementById("output").innerHTML = "Loading text...";
-            var output = document.getElementById('output');
-            var action = document.getElementById('action');
-            var translation = document.getElementById('translation');
-            var language = document.getElementById('language').value || 'en';
-            let speaker =  document.querySelector("#record")
-            let recognization = new webkitSpeechRecognition();
-            recognization.lang = window.navigator.language;
-            recognization.interimResults = false;
-
-            recognization.onstart = () => {
-               
-                speaker.style.backgroundColor = 'red';
-                
-                // action.innerHTML = "Listening...";
-            }
-
-            recognization.onresult = (e) => {
-                var transcript = e.results[0][0].transcript;
-                output.innerHTML = transcript;
-                output.classList.remove("hide");
-                // action.innerHTML = "";
-                speaker.style.backgroundColor = 'blue';
-
-                // Translate the transcript
-                translateText(transcript, language);
-            }
-
-            recognization.onerror = (e) => {
-                action.innerHTML = "Error occurred: " + e.error;
-            }
-
-            recognization.onend = () => {
-                action.innerHTML = "";
-            }
-
-            recognization.start();
-        }
-
-        function translateText(text, targetLang) {
-            var translation = document.getElementById('translation');
-            translation.innerHTML = "Translating...";
-
-            fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|${targetLang}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.responseData) {
-                        translation.innerHTML = data.responseData.translatedText;
-                        translation.classList.remove("hide");
-                    } else {
-                        translation.innerHTML = "Translation failed.";
-                    }
-                })
-                .catch(error => {
-                    translation.innerHTML = "Error: " + error;
-                });
-        }
-    </script>
-</body>
+    </body>
 </html>
