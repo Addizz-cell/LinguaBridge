@@ -26,7 +26,7 @@ nav a{
 nav a span{
     padding-left: 5px;
 }
-.section1{
+#section1{
     /* border: 2px solid black; */
     padding: 2rem;
     border-radius: 8px;
@@ -73,6 +73,9 @@ textarea{
 .section2{
     line-height: 1.8; /* Adds space between lines */
     margin: 2rem 0;
+
+
+    /* width: min-content; */
     padding: 2rem 4rem;
     color: white;
     background-image: radial-gradient(circle at center center, transparent 0%,rgb(0,0,0) 85%),linear-gradient(155deg, rgba(192, 192, 192,0.05) 0%, rgba(192, 192, 192,0.05) 50%,rgba(60, 60, 60,0.05) 50%, rgba(60, 60, 60,0.05) 100%),linear-gradient(304deg, rgba(97, 97, 97,0.05) 0%, rgba(97, 97, 97,0.05) 50%,rgba(52, 52, 52,0.05) 50%, rgba(52, 52, 52,0.05) 100%),linear-gradient(317deg, rgba(98, 98, 98,0.05) 0%, rgba(98, 98, 98,0.05) 50%,rgba(249, 249, 249,0.05) 50%, rgba(249, 249, 249,0.05) 100%),linear-gradient(264deg, rgba(1, 1, 1,0.05) 0%, rgba(1, 1, 1,0.05) 50%,rgba(202, 202, 202,0.05) 50%, rgba(202, 202, 202,0.05) 100%),linear-gradient(178deg, rgba(61, 61, 61,0.05) 0%, rgba(61, 61, 61,0.05) 50%,rgba(254, 254, 254,0.05) 50%, rgba(254, 254, 254,0.05) 100%),linear-gradient(253deg, rgba(237, 237, 237,0.05) 0%, rgba(237, 237, 237,0.05) 50%,rgba(147, 147, 147,0.05) 50%, rgba(147, 147, 147,0.05) 100%),linear-gradient(381deg, rgba(183, 183, 183,0.05) 0%, rgba(183, 183, 183,0.05) 50%,rgba(57, 57, 57,0.05) 50%, rgba(57, 57, 57,0.05) 100%),radial-gradient(circle at center center, hsl(351,4%,12%),hsl(351,4%,12%));
@@ -114,12 +117,14 @@ ul {
     margin: 1rem 0; /* Add some margin between features on smaller screens 
 } */
 .features {
-    width: 100%;
+    width: 85%;
     /* max-width: 1200px; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
+    margin: 0 auto;
+    padding: 1.5rem 0 4rem 0;
   }
   
   .feature1, .feature2, .feature3, .feature4 {
@@ -129,15 +134,26 @@ ul {
     border: 1px solid white;
     border-radius: 8px;
     padding: 3rem;
-    width: 20rem;
+    max-width: 20rem;
     height: auto;
     margin: center;
     box-shadow: 0 0 15px #5c6f7a;
   }
+  .discription{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
   
   /* Media query for smaller screens */
-  @media (min-width: 768px) {
+  @media (max-width: 550px) {
+    .secHeader img{
+        width: 100%;
+        float: unset;
+        margin: 0 auto;
+    }
     .features{
+        /* background-color: #f4f4f9; */
         flex-direction: column;
         align-items: center;
     }
