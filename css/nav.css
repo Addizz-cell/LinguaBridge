@@ -1,0 +1,40 @@
+nav{
+    height: 10vh;
+    width: 100%;
+    background-color: rgb(3, 0, 0);
+    display: flex;
+    align-items: center;
+    position: sticky;
+    padding-left: 5px;
+    padding-right: 6rem;
+    margin-bottom: 2rem;
+    justify-content: space-between;
+    
+}
+nav a{
+    display: flex;
+    color: white;
+    text-decoration: none;
+}
+.nav-link{
+    display: flex;
+    gap: 10px;
+}
+.a-tag:hover{
+    background-color: unset;
+    color: white;
+    text-decoration: underline;
+    padding: unset;
+    border-radius: unset;
+
+}
+.a-tag{
+    background-color: white;
+    color: black;
+    padding: 8px;
+    border-radius: 15px;
+    /* font-size: 17px; */
+}
+nav a span{
+    padding-left: 5px;
+}

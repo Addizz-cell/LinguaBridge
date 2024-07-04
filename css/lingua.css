@@ -7,25 +7,7 @@ body{
     background-color: #f4f4f9;
     font-family: Arial, sans-serif;
 }
-nav{
-    height: 10vh;
-    width: 100%;
-    background-color: rgb(3, 0, 0);
-    display: flex;
-    align-items: center;
-    position: sticky;
-    padding-left: 5px;
-    margin-bottom: 2rem;
-    
-}
-nav a{
-    display: flex;
-    color: white;
-    text-decoration: none;
-}
-nav a span{
-    padding-left: 5px;
-}
+
 #section1{
     /* border: 2px solid black; */
     padding: 2rem;

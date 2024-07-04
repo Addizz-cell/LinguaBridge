@@ -1,0 +1,38 @@
+
+
+main{
+    padding: 0 3rem;
+}
+#header,h2{
+    text-align: center;
+}
+.team-members{
+display: flex;
+gap: 10px;
+
+}
+.addizz{
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 3rem 4rem;
+
+}
+.socials{
+    display: flex;
+    font-size: 10px;
+    justify-content: space-between;
+    background-color: rgb(201, 201, 201);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+}
+.socials a{
+    color: black;
+    text-decoration: none;
+}
+
+ @media (max-width: 670px) {
+    .team-members{
+        flex-wrap: wrap;
+    }
+ }
