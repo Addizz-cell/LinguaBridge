@@ -9,6 +9,8 @@ main{
 .team-members{
 display: flex;
 gap: 10px;
+margin: 0 auto;
+
 
 }
 .addizz{
@@ -17,6 +19,7 @@ gap: 10px;
     border-radius: 10px;
     padding: 3rem 4rem;
     margin: 0 auto;
+    
 
 }
 .socials{
@@ -31,9 +34,27 @@ gap: 10px;
     color: black;
     text-decoration: none;
 }
+footer{
+    height: 5vh;
+    background-color: black;
+    text-align: center;
+    padding-top: 1vh;
+    color: white;
+}
 
  @media (max-width: 670px) {
     .team-members{
         flex-wrap: wrap;
     }
+    /* .addizz{
+        margin-right: 3rem;
+        margin: unset;
+    } */
+     .addizz img{
+        max-width: 150px;
+     }
+     .socials{
+        /* max-width: 150px; */
+        flex-wrap: wrap;
+     }
  }

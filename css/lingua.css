@@ -54,7 +54,7 @@ textarea{
 
 .section2{
     line-height: 1.8; /* Adds space between lines */
-    margin: 2rem 0;
+    margin-top: 2rem;
 
 
     /* width: min-content; */
@@ -125,6 +125,13 @@ ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+  }
+  .foot{
+    height: 5vh;
+    /* background-color: black; */
+    text-align: center;
+    padding-top: 1vh;
+    /* color: white; */
   }
   
   /* Media query for smaller screens */
