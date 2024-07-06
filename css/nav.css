@@ -40,6 +40,16 @@ nav a span{
 }
 .btn-cont{
     display: none;
+    /* width: 20px; */
+    /* border: 1px solid white; */
+
+}
+#myBtn{
+    background-color: black;
+    width: 35px;
+}
+#myBtn img{
+    width: 27px;
 }
 .modal {
     display: none;/* Hidden by default */
@@ -63,7 +73,7 @@ nav a span{
     gap: 10px;
 
 }
-.modal-content ul a, li {
+.modal-content ul a, .modal-content ul li {
     text-decoration: none;
     color: white;
     font-size: large;
